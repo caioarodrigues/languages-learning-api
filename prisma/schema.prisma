@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String
+  last_name String
+  password String
+  books Book[]
+}
+
+model Book {
+  id    Int     @id @default(autoincrement())
+  title String
+  author String
+  year  Int
+  userId Int?
+  user User? @relation(fields: [userId], references: [id])
+  language Language
+}
+
+enum Language {
+  portuguese
+  english
+  spanish
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://admin:@123456789#ChUcHuBeLeZa0:3306/languages-learning-api"
+}
