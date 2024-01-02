@@ -1,0 +1,1 @@
+export type LanguagesType = "english" | "spanish" | "portuguese";

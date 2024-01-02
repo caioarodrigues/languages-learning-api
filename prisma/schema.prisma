@@ -11,17 +11,14 @@ model User {
   name      String
   last_name String
   password  String
-  books     Book[]
 }
 
 model Book {
   id       Int      @id @default(autoincrement())
   title    String
-  author   String
   year     Int
-  userId   Int?
-  user     User?    @relation(fields: [userId], references: [id])
   language Language
+  content  String @db.Text
 }
 
 enum Language {
